@@ -1,2 +1,3 @@
-# smart-blood-donor
-Smart Blood Donor
+# Smart Blood Donor
+
+Flutter Application
