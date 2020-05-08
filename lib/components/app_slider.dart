@@ -13,8 +13,8 @@ class AppSlider extends StatelessWidget {
     return SlidingUpPanel(
       borderRadius: BorderRadius.only(
           topLeft: Radius.circular(20), topRight: Radius.circular(20)),
-      minHeight: 400,
-      maxHeight: 450,
+      minHeight: MediaQuery.of(context).size.height - 300,
+      maxHeight: MediaQuery.of(context).size.height - 100,
       padding: EdgeInsets.all(24),
       controller: _controller,
       backdropColor: Colors.black12,

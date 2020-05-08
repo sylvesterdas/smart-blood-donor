@@ -39,7 +39,7 @@ class HomeView extends StatelessWidget {
                           child: Text(
                             APP_NAME,
                             style: TextStyle(
-                                color: Colors.white,
+                                color: secondaryTextColor,
                                 fontSize: 24.0,
                             ),
                           ),
@@ -48,7 +48,7 @@ class HomeView extends StatelessWidget {
                           child: Text(
                             "You are a generous donor",
                             style: TextStyle(
-                              color: Colors.white70,
+                              color: secondaryTextColorLight,
                               fontSize: 16.0,
                             ),
                           ),
