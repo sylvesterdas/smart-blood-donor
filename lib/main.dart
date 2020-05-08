@@ -27,6 +27,7 @@ Future<void> main() async {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
+          fontFamily: 'Roboto',
           primaryColor: primaryColor,
           accentColor: accentColor,
         ),
