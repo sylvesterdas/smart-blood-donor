@@ -17,7 +17,7 @@ class AlertsMessagesUtils {
         gravity: ToastGravity.CENTER,
         timeInSecForIosWeb: timeForIos != 0 ? timeForIos : (long ? 5 : 3),
         backgroundColor: primaryColor,
-        textColor: primaryTextColor,
+        textColor: secondaryTextColor,
         fontSize: 16.0);
   }
 }

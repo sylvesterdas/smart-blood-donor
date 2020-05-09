@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
+import 'package:smartblooddonor/auth/view/login_view.dart';
 import 'package:smartblooddonor/components/app_scaffold.dart';
 import 'package:smartblooddonor/components/app_slider.dart';
 import 'package:smartblooddonor/core/app_constants.dart';
@@ -22,11 +23,7 @@ class HomeView extends StatelessWidget {
           primary: true,
           key: _scaffoldKey,
           body: AppSlider(
-              panel: Column(
-                children: <Widget>[
-                  Text("This is the body")
-                ],
-              ),
+              panel: LoginView(scaffoldState: _scaffoldKey),
               body: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
