@@ -38,27 +38,37 @@ class SBDApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        fontFamily: 'Roboto',
-        primarySwatch: Colors.red,
-        primaryColor: primaryColor,
-        accentColor: accentColor,
-      ),
-      home: MyHomePage(
-        title: APP_NAME,
-        analytics: analytics,
-        observer: observer,
-      ),
-      navigatorObservers: <NavigatorObserver>[observer],
-      routes: routes,
-      builder: (context, child) {
-        return MediaQuery(
-            child: child,
-            data: MediaQuery.of(context).copyWith(textScaleFactor: textScaleFactor)
-        );
+    return GestureDetector(
+      onTap: () {
+        FocusScopeNode currentFocus = FocusScope.of(context);
+        if (!currentFocus.hasPrimaryFocus) {
+          currentFocus.unfocus();
+        }
       },
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          fontFamily: 'Roboto',
+          primarySwatch: Colors.red,
+          primaryColor: primaryColor,
+          primaryColorLight: secondaryColor,
+          textSelectionColor: primaryTextColor,
+          accentColor: secondaryColor,
+        ),
+        home: MyHomePage(
+          title: APP_NAME,
+          analytics: analytics,
+          observer: observer,
+        ),
+        navigatorObservers: <NavigatorObserver>[observer],
+        routes: routes,
+        builder: (context, child) {
+          return MediaQuery(
+              child: child,
+              data: MediaQuery.of(context).copyWith(textScaleFactor: textScaleFactor)
+          );
+        },
+      ),
     );
   }
 }

@@ -22,11 +22,15 @@ class AppScaffold extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _key,
-      body: _body,
+      body: Container(
+        decoration: BoxDecoration(
+            color: background
+        ),
+        child: _body,
+      ),
       primary: _primary,
-      backgroundColor: primaryColor,
       appBar: _showAppbar ? AppBar(
-        title: Text(_title),
+        title: Text(_title, style: TextStyle(color: primaryTextColor),),
       ) : null,
     );
   }
