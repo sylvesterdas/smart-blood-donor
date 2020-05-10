@@ -1,16 +1,19 @@
-import 'package:flutter/cupertino.dart';
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:intl_phone_number_input/intl_phone_number_input.dart';
+import 'package:smartblooddonor/auth/view/firebase_google_auth.dart';
 import 'package:smartblooddonor/core/app_constants.dart';
-import 'package:smartblooddonor/utils/alerts_messages.dart';
 
-class LoginView extends StatelessWidget {
+class LoginView extends StatefulWidget {
+
+  LoginView();
+
+  @override
+  _LoginViewState createState() => _LoginViewState();
+}
+
+class _LoginViewState extends State<LoginView> {
   final GlobalKey _containerKey = GlobalKey();
-  final TextEditingController _textEditingController = TextEditingController();
-  final GlobalKey<ScaffoldState> _scaffoldKey;
-
-  LoginView({@required GlobalKey<ScaffoldState> scaffoldState}) : _scaffoldKey = scaffoldState;
 
   @override
   Widget build(BuildContext context) {
@@ -21,31 +24,30 @@ class LoginView extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           Container(
+            padding: EdgeInsets.all(8),
             alignment: Alignment.center,
-            child: Text("Register", style: TextStyle(fontSize: 16)),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 18.0, horizontal: 8.0),
-            child: InternationalPhoneNumberInput(
-              autoFocus: true,
-              autoValidate: true,
-              countries: countries,
-              ignoreBlank: true,
-              countrySelectorScrollControlled: true,
-              onInputChanged: (PhoneNumber number) => null,
-              keyboardAction: TextInputAction.go,
-              textFieldController: _textEditingController,
+            child: Text(
+              "Welcome,",
+              style: TextStyle(
+                fontSize: 20,
+                color: primaryTextColor,
+              ),
             ),
           ),
           Container(
-            child: RaisedButton(child: Text("Submit"), onPressed: _signUp),
-          )
+            alignment: Alignment.center,
+            child: Text(
+              "Sign in to access your data",
+              style: TextStyle(
+                  fontSize: 16,
+                  color: secondaryTextColor,
+                  fontWeight: FontWeight.w100),
+            ),
+          ),
+//          FirebasePhoneAuth()
+        FirebaseGoogleAuth()
         ],
       ),
     );
-  }
-
-  _signUp() {
-    AlertsMessagesUtils.showInSnackBar(_scaffoldKey, "Submitted");
   }
 }

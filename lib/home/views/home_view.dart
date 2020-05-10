@@ -23,20 +23,20 @@ class HomeView extends StatelessWidget {
           primary: true,
           key: _scaffoldKey,
           body: AppSlider(
-              panel: LoginView(scaffoldState: _scaffoldKey),
+              panel: LoginView(),
               body: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
                   Container(
-                    padding: EdgeInsets.fromLTRB(8, 50, 8, 20),
+                    padding: EdgeInsets.symmetric(vertical: 100, horizontal: 20),
                     child: Column(
                       children: <Widget>[
                         Container(
-                          padding: EdgeInsets.all(24),
+                          padding: EdgeInsets.all(8),
                           child: Text(
                             APP_NAME,
                             style: TextStyle(
-                                color: secondaryTextColor,
+                                color: primaryTextColor,
                                 fontSize: 24.0,
                             ),
                           ),
@@ -45,7 +45,7 @@ class HomeView extends StatelessWidget {
                           child: Text(
                             "You are a generous donor",
                             style: TextStyle(
-                              color: secondaryTextColorLight,
+                              color: secondaryTextColor,
                               fontSize: 16.0,
                             ),
                           ),

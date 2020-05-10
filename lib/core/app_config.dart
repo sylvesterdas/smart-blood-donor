@@ -8,4 +8,4 @@ const String BASE_URL = "https://sylvesterdas.com";
 
 const API_URL = "$BASE_URL/api/$API_VERSION/";
 
-
+bool dark = true;
