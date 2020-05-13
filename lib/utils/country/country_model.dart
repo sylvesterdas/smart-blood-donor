@@ -20,7 +20,7 @@ class Country {
       name: data['en_short_name'],
       countryCode: data['alpha_2_code'],
       dialCode: data['dial_code'],
-      flagUri: 'assets/flags/${data['alpha_2_code'].toLowerCase()}.png',
+      flagUri: 'assets/images/flags/${data['alpha_2_code'].toLowerCase()}.png',
       nameTranslations: data['nameTranslations'],
     );
   }

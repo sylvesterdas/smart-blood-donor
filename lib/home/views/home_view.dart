@@ -23,7 +23,7 @@ class HomeView extends StatelessWidget {
           primary: true,
           key: _scaffoldKey,
           body: AppSlider(
-              panel: LoginView(scaffoldState: _scaffoldKey),
+              panel: LoginView(),
               body: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
