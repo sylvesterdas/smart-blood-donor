@@ -5,12 +5,15 @@ import 'package:flutter/services.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
 import 'package:redux_thunk/redux_thunk.dart';
+import 'package:smartblooddonor/core/app_config.dart';
 import 'package:smartblooddonor/core/app_constants.dart';
 import 'package:smartblooddonor/core/app_reducers.dart';
 import 'package:smartblooddonor/core/app_routes.dart';
 import 'package:smartblooddonor/core/app_state.dart';
 import 'package:smartblooddonor/home/views/home_view.dart';
+import 'package:smartblooddonor/user/models/User.dart';
 import 'package:smartblooddonor/utils/alerts_messages.dart';
+import 'package:smartblooddonor/utils/app_shared_preference.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -300,6 +303,15 @@ class _MyHomePageState extends State<MyHomePage> {
       searchTerm: 'test search term',
     );
     setMessage('All standard events logged successfully');
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    login = ValueNotifier<User>(null);
+    AppSharedPreference.login.then((user) {
+      login.value = user;
+    });
   }
 
   @override

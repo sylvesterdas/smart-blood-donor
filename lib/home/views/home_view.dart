@@ -4,8 +4,10 @@ import 'package:redux/redux.dart';
 import 'package:smartblooddonor/auth/view/login_view.dart';
 import 'package:smartblooddonor/components/app_scaffold.dart';
 import 'package:smartblooddonor/components/app_slider.dart';
+import 'package:smartblooddonor/core/app_config.dart';
 import 'package:smartblooddonor/core/app_constants.dart';
 import 'package:smartblooddonor/core/app_state.dart';
+import 'package:smartblooddonor/user/models/User.dart';
 
 class HomeView extends StatelessWidget {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
@@ -23,7 +25,14 @@ class HomeView extends StatelessWidget {
           primary: true,
           key: _scaffoldKey,
           body: AppSlider(
-              panel: LoginView(),
+              panel: ValueListenableBuilder<User>(
+                valueListenable: login,
+                builder: (BuildContext context, value, Widget __) {
+                  if (value == null || !value.isLoggedIn)
+                    return Container(child: LoginView());
+                  return Container(child: Text('Successfully Logged in'),);
+                },
+              ),
               body: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[

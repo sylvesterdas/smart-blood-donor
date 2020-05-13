@@ -2,6 +2,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:smartblooddonor/core/app_config.dart';
+import 'package:smartblooddonor/user/models/User.dart';
+import 'package:smartblooddonor/utils/app_shared_preference.dart';
 
 class FirebaseGoogleAuth extends StatefulWidget {
   @override
@@ -79,6 +82,17 @@ class _FirebaseGoogleAuthState extends State<FirebaseGoogleAuth> {
 
     final FirebaseUser currentUser = await _auth.currentUser();
     assert(user.uid == currentUser.uid);
+
+    Map<String, String> userData = {
+      'firstName': user.displayName.split(' ')[0],
+      'lastName': user.displayName.split(' ')[1] ?? '',
+      'email': user.email,
+    };
+
+    User myUser = User.fromMap(userData);
+    AppSharedPreference.setLogin(myUser);
+
+    login.value = myUser;
 
     return 'signInWithGoogle succeeded: $user';
   }
